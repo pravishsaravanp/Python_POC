@@ -11,7 +11,7 @@ import pyjokes
 
 listener = sr.Recognizer() 
 engine = pyttsx3.init()
-
+flag = True
 
 # Voice from Python code
 def speak(command):
@@ -63,12 +63,16 @@ def run_jeff():
         joke = pyjokes.get_joke('en')
         print(joke)
         speak(joke)
+    elif 'thank you' or 'bye' in command:
+        print('Nice talking to you!')
+        speak('Nice talking to you!')
+        flag = False
     elif 'fuck' or 'suck' in command:
         speak('Please be polite')
     else:
-        print('PLease say again!')
-        speak('PLease say again!')
+        print('Please say again!')
+        speak('Please say again!')
 
 
-while True:
+while flag is True:
     run_jeff()
